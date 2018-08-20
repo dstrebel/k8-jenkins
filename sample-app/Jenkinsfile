@@ -1,6 +1,7 @@
 def  appName = 'sample-app'
 def  feSvcName = "${appName}-frontend"
-def  imageTag = "tugboatlabs.azurecr.io/${appName}:${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
+def  ACRNAME = 'tugboatlabs'
+def  imageTag = "${appName}:${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
 
 pipeline {
   agent {
@@ -50,19 +51,23 @@ spec:
       steps {
         container('golang') {
           sh """
-            ln -s `pwd` /go/src/sample-app
-            cd /go/src/sample-app
+            ln -s /home/jenkins/workspace/test-k8-deploy/k8-jenkins /go/src/k8-jenkins
+            cd /go/src/k8-jenkins/
             go test
           """
         }
       }
     }
-    stage('Build and push image with Azure Container Builder') {
+    stage('Build Container and Push to Registry') {
       steps {
         container('azurecli') {
-          sh "PYTHONUNBUFFERED=1 gcloud container builds submit -t ${imageTag} ."
+        withCredentials([azureServicePrincipal('azure-cli')]) {
+            sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
+            sh 'az account set -s $AZURE_SUBSCRIPTION_ID'
+            sh("az acr build -t ${imageTag} -r ${ACRNAME} --no-logs /home/jenkins/workspace/test-k8-deploy/k8-jenkins")
         }
       }
+    }
     }
     stage('Deploy Production') {
       // Production branch
