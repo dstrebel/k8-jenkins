@@ -22,9 +22,9 @@ import (
 	"cloud.google.com/go/compute/metadata"
 )
 
-func TestGCE(t *testing.T) {
+func TestAKS(t *testing.T) {
 	i := newInstance()
-	if !metadata.OnGCE() && i.Error != "Not running on Kubernetes" {
+	if !metadata.OnAKS() && i.Error != "Not running on Kubernetes" {
 		t.Error("Test not running on Docker, but error does not indicate that fact.")
 	}
 }
