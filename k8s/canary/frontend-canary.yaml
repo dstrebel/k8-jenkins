@@ -15,7 +15,7 @@
 kind: Deployment
 apiVersion: extensions/v1beta1
 metadata:
-  name: gceme-frontend-canary
+  name: aks-frontend-canary
 spec:
   replicas:
   template:
