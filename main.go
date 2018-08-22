@@ -153,7 +153,7 @@ func (a *assigner) assign(getVal func() (string, error)) string {
 
 func newInstance() *Instance {
 	var i = new(Instance)
-	if !metadata.OnGCE() {
+	if !metadata.OnAKS() {
 		i.Error = "Not running on Kubernetes"
 		return i
 	}
