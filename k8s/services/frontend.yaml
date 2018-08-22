@@ -15,7 +15,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: gceme-frontend
+  name: aks-frontend
 spec:
   type: LoadBalancer
   ports:

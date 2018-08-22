@@ -15,7 +15,7 @@
 kind: Deployment
 apiVersion: extensions/v1beta1
 metadata:
-  name: gceme-frontend-dev
+  name: aks-frontend-dev
 spec:
   replicas:
   template:

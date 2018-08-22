@@ -15,7 +15,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: gceme-backend
+  name: aks-backend
 spec:
   ports:
   - name: http
