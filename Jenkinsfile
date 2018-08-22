@@ -1,4 +1,4 @@
-def  appName = 'sample-app'
+def  appName = 'aks'
 def  feSvcName = "${appName}-frontend"
 def  ACRNAME = 'tugboatlabs'
 def  imageTag = "${appName}:${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
