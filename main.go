@@ -154,7 +154,7 @@ func (a *assigner) assign(getVal func() (string, error)) string {
 func newInstance() *Instance {
 	var i = new(Instance)
 	if !metadata.OnGCE() {
-		i.Error = "Not running on GCE"
+		i.Error = "Not running on Docker"
 		return i
 	}
 
