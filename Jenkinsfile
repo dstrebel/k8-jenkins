@@ -1,7 +1,7 @@
 def  appName = 'aks'
 def  feSvcName = "${appName}-frontend"
 def  ACRNAME = 'tugboatlabs'
-def  imageTag = "${appName}:${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
+def  imageTag = "tugboatlabs.azurecr.io/${appName}:${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
 
 pipeline {
   agent {
