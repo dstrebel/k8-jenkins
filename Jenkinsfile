@@ -38,21 +38,12 @@ spec:
   }
   stages {
 
-    stage('gitpull') {
-      steps {
-        container('jnlp') {
-          sh """
-            git clone https://github.com/dstrebel/k8-jenkins
-          """
-          }
-        }
-      }
     stage('Test') {
       steps {
         container('golang') {
           sh """
-            ln -s /home/jenkins/workspace/test-k8-deploy/k8-jenkins /go/src/k8-jenkins
-            cd /go/src/k8-jenkins/
+            ln -s `pwd` /go/src/sample-app
+            cd /go/src/sample-app
             go test
           """
         }
