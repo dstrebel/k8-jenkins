@@ -24,7 +24,7 @@ import (
 
 func TestAKS(t *testing.T) {
 	i := newInstance()
-	if !metadata.OnAKS() && i.Error != "Not running on Kubernetes" {
-		t.Error("Test not running on Docker, but error does not indicate that fact.")
+	if !metadata.OnGCE() && i.Error != "Not running on Kubernetes" {
+		t.Error("Test not running on Kubernetes, but error does not indicate that fact.")
 	}
 }
