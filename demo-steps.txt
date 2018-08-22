@@ -1,0 +1,29 @@
+OPEN Curl URL 1.0
+git checkout -b canary
+
+//snip
+<div class="card orange">
+<div class="card-content white-text">
+<div class="card-title">Backend that serviced this request</div>
+//snip
+
+//snip
+const version string = "2.0.0"
+//snip
+
+COMMIT ALL FILES
+
+ git checkout master
+ git merge canary
+ git push origin master
+
+ Open CURL URL 2.0
+
+ Deploy Dev Branch
+
+  git checkout -b new-feature
+  git push origin new-feature
+
+  kubectl proxy
+
+  curl http://localhost:8001/api/v1/proxy/namespaces/new-feature/services/gceme-frontend:80/
