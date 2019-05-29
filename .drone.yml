@@ -5,5 +5,9 @@ steps:
 - name: docker  
   image: plugins/docker
   settings:
-    repo: k8-jenkins
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    repo: dstrebel/k8-jenkins
     tags: latest
