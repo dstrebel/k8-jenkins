@@ -5,7 +5,5 @@ steps:
 - name: docker  
   image: plugins/docker
   settings:
-    username: strebeld@gmail.com
-    password: Maxwell,08
     repo: dstrebel/k8-jenkins
     tags: latest
